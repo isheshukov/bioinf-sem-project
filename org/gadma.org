@@ -1,0 +1,41 @@
+#+TITLE: GADMA
+
+* Литература, ссылки
+** DONE Магистерская Екатерины                                       :ATTACH:
+   :PROPERTIES:
+   :Attachments: diploma_2018_thesis.pdf
+   :ID:       d131a44b-59b8-4e55-816c-97e4debffbfb
+   :END:
+
+** TODO Мануал по ∂a∂i                                               :ATTACH:
+   :PROPERTIES:
+   :Attachments: manual.pdf
+   :ID:       44d29c75-5232-41ca-af3e-c78e8ae03773
+   :END:
+** TODO Статья ∂a∂i                                                  :ATTACH:
+   :PROPERTIES:
+   :Attachments: article.pdf
+   :ID:       bd0f7ab9-01ff-4d3c-8179-cfd6f1b1713b
+   :END:
+** TODO [[https://www.coursera.org/lecture/bayesian-methods-in-machine-learning/nonparametric-methods-ISjIH][Шестая неделя "Bayesian Methods for Machine Learning"]]
+** TODO A Tutorial on Bayesian Optimization                          :ATTACH:
+   :PROPERTIES:
+   :Attachments: 1807.02811.pdf
+   :ID:       667b559b-656d-4d09-b2ec-fecd42cc21fe
+   :END:
+** TODO [[https://nbviewer.jupyter.org/github/SheffieldML/GPyOpt/blob/master/manual/index.ipynb][Ноутбуки GPyOpt]]
+* Заметки
+* Прогресс / Что нужно сделать
+** DONE Прочитать что-то из списка литературы
+** DONE Встретиться с Екатериной
+** DONE Встретиться с Вячеславом
+** DONE Качаем  dadi или moments.
+** DONE В папке examples/YRI-CEU смотрите пример YRI_CEU.py.
+** DONE Пишем запуск Байесовской оптимизации для модели YRI_CEU. Не забыть замерить время.
+** В мануале dadi или moments найти модель для трех популяций YRI, CEU, CHB. И запустить байеса на ней.
+   Данные:
+   YRI_CEU - examples/YRI-CEU
+   YRI_CEU_CHB - doc/manual/
+** Acquisiton functions, параметрические модели
+** Научиться запускаться с ограничением по времени и сравнить likelihoods
+** Графики сходимости, КАРТИНКИ

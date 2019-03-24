@@ -65,22 +65,16 @@ def optimize_log_bayes(p0, data, model_func, pts, lower_bound=None, upper_bound=
 
     bounds = [{'domain': (l, u)} for l, u in zip(lower_bound, upper_bound)]
 
-    # myProblem = GPyOpt.methods.BayesianOptimization(f_wrapped,
-    #                                                 X=atleast_2d(log(p0)),
-    #                                                 domain=bounds,
-    #                                                 acquisition_type='EI',
-    #                                                 verbosity=True)
-
-    myProblem = GPyOpt.methods.BayesianOptimization(f_obj_wrapped,
-                                                    X=atleast_2d(p0),
+    myProblem = GPyOpt.methods.BayesianOptimization(f_wrapped,
+                                                    X=atleast_2d(log(p0)),
                                                     domain=bounds,
                                                     acquisition_type='EI',
                                                     verbosity=True)
 
     myProblem.run_optimization(maxiter)
 
-    # xopt = BayesInference._project_params_up(exp(myProblem.x_opt), fixed_params)
-    xopt = BayesInference._project_params_up(myProblem.x_opt, fixed_params)
+    xopt = BayesInference._project_params_up(exp(myProblem.x_opt), fixed_params)
+    #xopt = BayesInference._project_params_up(myProblem.x_opt, fixed_params)
 
 
     if output_file:
@@ -94,7 +88,7 @@ print('MONKEY PATCHED BAYES START')
 popt = BayesInference.optimize_log(p0, data, func_ex, pts_l,
                                     lower_bound=lower_bound,
                                     upper_bound=upper_bound,
-                                    verbose=len(p0))
+                                    verbose=len(p0), maxiter=300)
 print(popt)
 print('MONKEY PATCHED BAYES END')
 
@@ -118,23 +112,23 @@ fig = pylab.figure(1)
 fig.clear()
 dadi.Plotting.plot_1d_comp_multinom(model.marginalize([1,2]),
                                     data.marginalize([1,2]))
-fig.savefig('1d_comp.pdf')
+fig.savefig('gpyopt_1d_comp.png')
 
 fig = pylab.figure(2)
 fig.clear()
 dadi.Plotting.plot_single_2d_sfs(data.marginalize([2]), vmin=1)
-fig.savefig('2d_single.pdf')
+fig.savefig('gpyopt_2d_single.png')
 
 fig = pylab.figure(3)
 fig.clear()
 dadi.Plotting.plot_2d_comp_multinom(model.marginalize([2]),
                                     data.marginalize([2]), vmin=1)
-fig.savefig('2d_comp.pdf')
+fig.savefig('gpyopt_2d_comp.png')
 
 fig = pylab.figure(4, figsize=(8,10))
 fig.clear()
 dadi.Plotting.plot_3d_comp_multinom(model, data, vmin=1)
-fig.savefig('3d_comp.pdf')
+fig.savefig('gpyopt_3d_comp.png')
 
 pylab.show()
 
