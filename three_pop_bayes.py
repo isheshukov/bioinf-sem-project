@@ -8,6 +8,7 @@ from dadi import Numerics, PhiManip, Integration, Spectrum
 
 # Numpy is the numerical library dadi is built upon
 from numpy import array, atleast_2d, log, exp
+from numpy.random import uniform
 from scipy.optimize.slsqp import wrap_function
 
 data = dadi.Spectrum.from_file('YRI.CEU.CHB.fs')
@@ -26,12 +27,15 @@ lower_bound = [1e-3, 1e-3, 1e-3, 1e-3, 1e-3, 1e-3, 0, 0, 0, 0, 0, 0, 0]
 p0 = [2, 0.1, 2, 2, 0.1, 2, 1, 1, 1, 1, 0.2, 0.2, 0.2]
 # Make the extrapolating version of our demographic model function.
 func = OutOfAfrica.OutOfAfrica
-func_ex = dadi.Numerics.make_extrap_log_func(func)
+#func_ex_log = dadi.Numerics.make_extrap_log_func(func)
+func_ex = dadi.Numerics.make_extrap_func(func)
 
 # Perturb our parameters before optimization. This does so by taking each
 # parameter a up to a factor of two up or down.
-p0 = dadi.Misc.perturb_params(p0, fold=1, upper_bound=upper_bound,
-                              lower_bound=lower_bound)
+#p0 = dadi.Misc.perturb_params(p0, fold=1, upper_bound=upper_bound,
+#                              lower_bound=lower_bound)
+
+p0 = [uniform(l, u) for l, u in zip(lower_bound, upper_bound)]
 
 
 print('Beginning optimization ************************************************')
@@ -39,7 +43,7 @@ print('Beginning optimization ************************************************')
 BayesInference = dadi.Inference
 
 
-def optimize_log_bayes(p0, data, model_func, pts, lower_bound=None, upper_bound=None,
+def optimize_bayes(p0, data, model_func, pts, lower_bound=None, upper_bound=None,
                  verbose=0, flush_delay=0.5, epsilon=1e-3,
                  gtol=1e-5, multinom=True, maxiter=None, full_output=False,
                  func_args=[], func_kwargs={}, fixed_params=None, ll_scale=1,
@@ -65,16 +69,17 @@ def optimize_log_bayes(p0, data, model_func, pts, lower_bound=None, upper_bound=
 
     bounds = [{'domain': (l, u)} for l, u in zip(lower_bound, upper_bound)]
 
-    myProblem = GPyOpt.methods.BayesianOptimization(f_wrapped,
-                                                    X=atleast_2d(log(p0)),
+    myProblem = GPyOpt.methods.BayesianOptimization(f_obj_wrapped,
+                                                    X=atleast_2d(p0),
                                                     domain=bounds,
                                                     acquisition_type='EI',
-                                                    verbosity=True)
+                                                    verbosity=True,
+                                                    maximize=False)
 
     myProblem.run_optimization(maxiter)
 
-    xopt = BayesInference._project_params_up(exp(myProblem.x_opt), fixed_params)
-    #xopt = BayesInference._project_params_up(myProblem.x_opt, fixed_params)
+    #xopt = BayesInference._project_params_up(exp(myProblem.x_opt), fixed_params)
+    xopt = BayesInference._project_params_up(myProblem.x_opt, fixed_params)
 
 
     if output_file:
@@ -83,7 +88,7 @@ def optimize_log_bayes(p0, data, model_func, pts, lower_bound=None, upper_bound=
     return xopt
 
 
-BayesInference.optimize_log = optimize_log_bayes
+BayesInference.optimize_log = optimize_bayes
 print('MONKEY PATCHED BAYES START')
 popt = BayesInference.optimize_log(p0, data, func_ex, pts_l,
                                     lower_bound=lower_bound,
