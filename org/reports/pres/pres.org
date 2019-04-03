@@ -1,0 +1,87 @@
+#+TITLE: Байесовская оптимизация для вывода демографических историй
+#+LATEX_CLASS: beamer
+#+startup: beamer
+#+BEAMER_FRAME_LEVEL: 3
+#+LATEX_CLASS_OPTIONS:
+#+LATEX_HEADER: \usetheme{Frankfurt}
+#+LATEX_HEADER: \usepackage{PTSans}
+#+LaTeX_CLASS_OPTIONS: [presentation, smaller]
+#+LATEX_HEADER_EXTRA:
+#+SUBTITLE: Промежуточная презентация
+#+latex_header: \usepackage[utf8x]{inputenc}
+#+latex_header: \usepackage[T2A]{fontenc}
+#+latex_header: \usepackage[auto]{babel}
+#+latex_header: \usepackage{mathtools, amsmath, xspace}
+#+latex_header: \uselanguage{Russian}
+#+latex_header: \languagepath{Russian}
+#+latex_hedaer: \usepackage{hyperref}
+#+LANG: ru
+#+OPTIONS: toc:nil, date:nil
+#+AUTHOR: Илья Шешуков @@latex:\\@@ Руководители: Екатерина Носкова (ИТМО), Вячеслав Боровицкий (СПбГУ)
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+latex_header: \newcommand{\dadi}{$\partial$a$\partial$i\xspace }
+
+* Введение
+** Демографическая модель популяции
+Имея геномы людей, хотим понять как изменялись их популяции.
+Как менялась численность, когда популяции разделялись, когда они мигрировали.
+
+#+CAPTION: Out of Africa model
+#+NAME: fig:ooa
+#+ATTR_LATEX: :width 2in
+[[./pics/outofafrica.png]]
+
+* Аллель-частотный спектр
+** Аллель-частотный спектр
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+Allele frequency spectrum is the distribution of the allele frequencies of a
+given set of loci (often SNPs) in a population or sample[fn::Wikipedia].
+
+#+CAPTION: Хитмэп аллель-частотного спектра двух популяций
+#+NAME:   fig:sfs
+#+ATTR_LATEX: :width 2in
+[[./pics/sfs.png]]
+
+
+* Как это делается сейчас
+** \dadi
+https://bitbucket.org/gutenkunstlab/dadi/
++ Плюсы
+  - Она работает
+  - Ей пользуются реальные люди
++ Минусы
+  - Решает дифференциальное уравнение в частных производных, что долго
+  - Теоретически, для этой задачи можно использовать более эффективный алгоритм
+  - Для работы необходимо руками писать Питон
+
+** moments
+https://bitbucket.org/simongravel/moments
++ Плюсы
+  - Эффективнее, чем \dadi, особенно на больших популяциях
+
+* GADMA
+** GADMA
+https://github.com/ctlab/GADMA
+- Основана на \dadi и moments
+- Использует генетический алгоритм
+- Не требует человеческого вмешательства
+
+* Что можно сделать
+** Байесовская оптимизация
+- Хорошо работает для сложновычислимых функций (например, если нужно решать
+  уравнение в частных производных), т.е. хорошо подходит для задачи
+- Можно параллелить
+#+ATTR_LATEX: :width 2.5in
+[[./pics/bayes.png]]
+
+* Планы
+1) (В процессе) Заменить в \dadi алгоритм градиентного спуска на байесовскую оптимизацию.
+2) Посмотреть станет ли лучше
+3) (Может быть?) Интегрировать в GADMA
+
+* Конец
+#+begin_center
+Спасибо за внимание
+#+end_center
