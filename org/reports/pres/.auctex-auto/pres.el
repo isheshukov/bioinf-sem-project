@@ -38,7 +38,7 @@
    (TeX-add-symbols
     "dadi")
    (LaTeX-add-labels
-    "fig:org8451681"
-    "fig:org22dc094"))
+    "fig:org18739f8"
+    "fig:org7c90930"))
  :latex)
 
