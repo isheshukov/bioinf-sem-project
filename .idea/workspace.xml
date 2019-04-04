@@ -3,42 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="092a7f82-d631-4fe9-9f3f-088631ab6f90" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gpyopt_1d_comp.png" beforeDir="false" afterPath="$PROJECT_DIR$/gpyopt_1d_comp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gpyopt_2d_comp.png" beforeDir="false" afterPath="$PROJECT_DIR$/gpyopt_2d_comp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gpyopt_3d_comp.png" beforeDir="false" afterPath="$PROJECT_DIR$/gpyopt_3d_comp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/dadi-1d_comp-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/dadi-2d_comp-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/dadi-2d_single-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/dadi-3d_comp-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/dadi_YRI_CEU_10s.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/dadi_YRI_CEU_30s.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/dadi_YRI_CEU_5s.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/dadi_YRI_CEU_60s.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpy_YRI_CEU_10s_EI.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpy_YRI_CEU_10s_EI_conv.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpy_YRI_CEU_10s_LCB.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpy_YRI_CEU_10s_LCB_conv.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpy_YRI_CEU_10s_MPI.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpy_YRI_CEU_10s_MPI_conv.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpy_YRI_CEU_30s_EI.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpy_YRI_CEU_30s_EI_conv.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpy_YRI_CEU_30s_LCB.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpy_YRI_CEU_30s_LCB_conv.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpy_YRI_CEU_30s_MPI.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpy_YRI_CEU_30s_MPI_conv.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpy_YRI_CEU_5s_EI.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpy_YRI_CEU_5s_EI_conv.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpy_YRI_CEU_5s_LCB.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpy_YRI_CEU_5s_LCB_conv.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpy_YRI_CEU_5s_MPI.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpy_YRI_CEU_5s_MPI_conv.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpy_YRI_CEU_60s_EI.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpy_YRI_CEU_60s_EI_conv.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpyopt_1d_comp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpyopt_2d_comp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpyopt_2d_single.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/gpyopt_3d_comp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/reports/report1.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/org/reports/pres/.auctex-auto/pres.el" beforeDir="false" afterPath="$PROJECT_DIR$/org/reports/pres/.auctex-auto/pres.el" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/org/reports/pres/pres.org" beforeDir="false" afterPath="$PROJECT_DIR$/org/reports/pres/pres.org" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/org/reports/pres/pres.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/org/reports/pres/pres.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/org/reports/pres/pres.tex" beforeDir="false" afterPath="$PROJECT_DIR$/org/reports/pres/pres.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/three_pop_bayes.py" beforeDir="false" afterPath="$PROJECT_DIR$/three_pop_bayes.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -69,11 +37,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/three_pop_bayes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
+            <state relative-caret-position="496">
+              <caret line="94" column="70" lean-forward="true" selection-start-line="94" selection-start-column="70" selection-end-line="94" selection-end-column="70" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
-                <marker date="1554320959989" expanded="true" signature="4736:10268" ph="..." />
+                <marker date="1554372250999" expanded="true" signature="5551:11083" ph="..." />
               </folding>
             </state>
           </provider>
@@ -120,8 +88,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Inference.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13185">
-              <caret line="879" column="67" selection-start-line="879" selection-start-column="67" selection-end-line="879" selection-end-column="67" />
+            <state relative-caret-position="316">
+              <caret line="899" column="49" lean-forward="true" selection-start-line="899" selection-end-line="900" />
             </state>
           </provider>
         </entry>
@@ -152,7 +120,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="560" />
     <option name="y" value="87" />
     <option name="width" value="928" />
@@ -261,11 +229,13 @@
       <workItem from="1554121129543" duration="14796000" />
       <workItem from="1554194216834" duration="9309000" />
       <workItem from="1554320820262" duration="1567000" />
+      <workItem from="1554329168177" duration="1217000" />
+      <workItem from="1554331929432" duration="4952000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41370000" />
+    <option name="totallyTimeSpent" value="47539000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="32" width="1856" height="1048" extended-state="7" />
@@ -286,12 +256,12 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32897604" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.4601963" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.35550708" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" sideWeight="0.85656565" visible="true" weight="0.016538037" />
-      <window_info anchor="right" x="0" y="0" width="414" height="848" id="Documentation" order="4" sideWeight="0.14343435" side_tool="true" visible="true" weight="0.016538037" />
+      <window_info anchor="right" id="SciView" order="3" sideWeight="0.8527919" visible="true" weight="0.016538037" />
+      <window_info anchor="right" x="0" y="0" width="414" height="848" id="Documentation" order="4" sideWeight="0.14720812" side_tool="true" visible="true" weight="0.016538037" />
       <window_info anchor="right" id="Database" order="5" weight="0.3296582" />
     </layout>
   </component>
@@ -299,17 +269,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/three_pop_bayes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-            <marker date="1554320959989" expanded="true" signature="4736:10268" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../dadi/venv/local/lib/python2.7/site-packages/bayes_opt/bayesian_optimization.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="855">
@@ -342,8 +301,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Inference.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13185">
-          <caret line="879" column="67" selection-start-line="879" selection-start-column="67" selection-end-line="879" selection-end-column="67" />
+        <state relative-caret-position="316">
+          <caret line="899" column="49" lean-forward="true" selection-start-line="899" selection-end-line="900" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/three_pop_bayes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="94" column="70" lean-forward="true" selection-start-line="94" selection-start-column="70" selection-end-line="94" selection-end-column="70" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+            <marker date="1554372250999" expanded="true" signature="5551:11083" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

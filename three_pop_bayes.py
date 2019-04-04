@@ -3,8 +3,7 @@ import dadi
 import OutOfAfrica
 import GPy, GPyOpt
 import pylab
-from bayes_opt import BayesianOptimization
-import inspect
+import scipy
 
 from dadi import Numerics, PhiManip, Integration, Spectrum
 
@@ -30,7 +29,7 @@ lower_bound = [1e-3, 1e-3, 1e-3, 1e-3, 1e-3, 1e-3, 0, 0, 0, 0, 0, 0, 0]
 # Make the extrapolating version of our demographic model function.
 func = OutOfAfrica.OutOfAfrica
 #func_ex_log = dadi.Numerics.make_extrap_log_func(func)
-func_ex = dadi.Numerics.make_extrap_log_func(func)
+func_ex = dadi.Numerics.make_extrap_func(func)
 
 # Perturb our parameters before optimization. This does so by taking each
 # parameter a up to a factor of two up or down.
@@ -44,44 +43,60 @@ print('Beginning optimization ************************************************')
 
 BayesInference = dadi.Inference
 
+
 def optimize_bayes(p0, data, model_func, pts, lower_bound=None, upper_bound=None,
                  verbose=0, flush_delay=0.5, epsilon=1e-3,
                  gtol=1e-5, multinom=False, maxiter=None, full_output=False,
                  func_args=[], func_kwargs={}, fixed_params=None, ll_scale=1,
                  output_file=None):
 
-    def f_obj_wrapped(nuAf, nuB, nuEu0, nuEu, nuAs0, nuAs, mAfB, mAfEu, mAfAs, mEuAs, TAf, TB, TEuAs):
-        x = [nuAf, nuB, nuEu0, nuEu, nuAs0, nuAs, mAfB, mAfEu, mAfAs, mEuAs, TAf, TB, TEuAs]
-        return -BayesInference._object_func_log(log(x), *args)
+    def f_wrapped(x):
+        print(x)
+        return BayesInference._object_func_log(x.tolist()[0], *args)
 
-    output_stream = BayesInference.sys.stdout
+    def f_obj_wrapped(x):
+        return BayesInference._object_func(x.tolist()[0], *args)
+
+    if output_file:
+        output_stream = file(output_file, 'w')
+    else:
+        output_stream = BayesInference.sys.stdout
 
     args = (data, model_func, pts, lower_bound, upper_bound, verbose,
             multinom, flush_delay, func_args, func_kwargs, fixed_params,
             ll_scale, output_stream)
 
-    #p0 = BayesInference._project_params_down(p0, fixed_params)
+    p0 = BayesInference._project_params_down(p0, fixed_params)
 
-    #pbounds = [{'domain': (l, u)} for l, u in zip(lower_bound, upper_bound)]
-    vars = ["nuAf", "nuB", "nuEu0", "nuEu", "nuAs0", "nuAs", "mAfB", "mAfEu", "mAfAs", "mEuAs", "TAf", "TB", "TEuAs"]
-    pbounds = {v: (l, u) for v, l, u in zip(vars, lower_bound, upper_bound)}
+    bounds = [{'domain': (l, u)} for l, u in zip(lower_bound, upper_bound)]
 
-    optimizer = BayesianOptimization(
-        f=f_obj_wrapped,
-        pbounds=pbounds,
-        random_state=1,
-    )
+    myProblem = GPyOpt.methods.BayesianOptimization(f_obj_wrapped,
+                                                    X=atleast_2d(p0),
+                                                    domain=bounds,
+                                                    acquisition_type='MPI',
+                                                    verbosity=True,
+                                                    maximize=False,
+                                                    #maxiter=50,
+                                                    num_cores=8,
+                                                    )
 
-    optimizer.maximize()
-    print(optimizer.max)
+    myProblem.run_optimization(maxiter, verbosity=True)
 
-#    xopt = BayesInference._project_params_up(myProblem.x_opt, fixed_params)
+    myProblem.plot_convergence()
+    #xopt = BayesInference._project_params_up(exp(myProblem.x_opt), fixed_params)
+    xopt = BayesInference._project_params_up(myProblem.x_opt, fixed_params)
+
+    outputs = scipy.optimize.fmin_bfgs(BayesInference._object_func, xopt,
+                                       epsilon=epsilon,
+                                       args=args, gtol=gtol,
+                                       full_output=True,
+                                       disp=False,
+                                       maxiter=maxiter)
+    xopt, fopt, gopt, Bopt, func_calls, grad_calls, warnflag = outputs
+    xopt = BayesInference._project_params_up(xopt, fixed_params)
 
 
-#    if output_file:
-#        output_stream.close()
-
-#    return xopt
+    return xopt
 
 
 BayesInference.optimize_log = optimize_bayes
@@ -89,7 +104,7 @@ print('MONKEY PATCHED BAYES START')
 popt = BayesInference.optimize_log(p0, data, func_ex, pts_l,
                                     lower_bound=lower_bound,
                                     upper_bound=upper_bound,
-                                    verbose=len(p0), maxiter=100)
+                                    verbose=len(p0), maxiter=10)
 print(popt)
 print('MONKEY PATCHED BAYES END')
 

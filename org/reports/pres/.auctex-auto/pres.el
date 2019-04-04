@@ -4,7 +4,7 @@
    (TeX-add-to-alist 'LaTeX-provided-class-options
                      '(("beamer" "presentation" "smaller")))
    (TeX-add-to-alist 'LaTeX-provided-package-options
-                     '(("ulem" "normalem") ("inputenc" "utf8" "utf8x") ("fontenc" "T1" "T2A") ("babel" "auto" "english")))
+                     '(("inputenc" "utf8") ("ulem" "normalem") ("fontenc" "T1" "T2A") ("babel" "english" "russian")))
    (add-to-list 'LaTeX-verbatim-environments-local "semiverbatim")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
@@ -33,11 +33,12 @@
     "PTSans"
     "babel"
     "mathtools"
-    "xspace")
+    "xspace"
+    "slashbox")
    (TeX-add-symbols
     "dadi")
    (LaTeX-add-labels
-    "fig:org6e19d1c"
-    "fig:orge7fa162"))
+    "fig:org8451681"
+    "fig:org22dc094"))
  :latex)
 
