@@ -78,7 +78,7 @@ def optimize_bayes(p0, data, model_func, lower_bound=None, upper_bound=None,
 
     myProblem.plot_convergence()
     #xopt = BayesInference._project_params_up(exp(myProblem.x_opt), fixed_params)
-    #xopt = BayesInference._project_params_up(myProblem.x_opt, fixed_params)
+    xopt = BayesInference._project_params_up(myProblem.x_opt, fixed_params)
 
     outputs = scipy.optimize.fmin_bfgs(BayesInference._object_func, xopt,
                                        epsilon=epsilon,
@@ -98,7 +98,7 @@ print('MONKEY PATCHED BAYES START')
 popt = BayesInference.optimize(p0, data, func,
                                     lower_bound=lower_bound,
                                     upper_bound=upper_bound,
-                                    verbose=len(p0), maxiter=200)
+                                    verbose=len(p0), maxiter=50)
 print(popt)
 print('MONKEY PATCHED BAYES END')
 

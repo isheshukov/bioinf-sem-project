@@ -1,4 +1,4 @@
-% Created 2019-04-04 Thu 18:08
+% Created 2019-04-05 Fri 04:49
 % Intended LaTeX compiler: pdflatex
 \documentclass[presentation, smaller]{beamer}
 \usepackage[utf8]{inputenc}
@@ -42,7 +42,7 @@
 
 \maketitle
 
-\begin{frame}[label={sec:org1f637a6}]{Введение}
+\begin{frame}[label={sec:org0765d55}]{Введение}
 \begin{block}{Демографическая модель популяции}
 Имея геномы людей, хотим понять как изменялись их популяции.
 Как менялась численность, когда популяции разделялись, как сильно они мигрировали.
@@ -50,13 +50,13 @@
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=2in]{./pics/outofafrica.png}
-\caption{\label{fig:org18739f8}
+\caption{\label{fig:orgff1fb1f}
 Популяционная модель человеческой миграции из Африки}
 \end{figure}
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:orgaf59816}]{Аллель-частотный спектр}
+\begin{frame}[label={sec:org3dbd45d}]{Аллель-частотный спектр}
 \begin{definition}[Аллель-частотный спектр]
 Аллель-частотный спектр это распределение частоты аллелей в данных локусах в
 популяции или выборке.
@@ -64,13 +64,13 @@
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=2in]{./pics/sfs.png}
-\caption{\label{fig:org7c90930}
+\caption{\label{fig:org9b2a592}
 Хитмэп аллель-частотного спектра двух популяций}
 \end{figure}
 \end{definition}
 \end{frame}
 
-\begin{frame}[label={sec:org5f2e367}]{Пример}
+\begin{frame}[label={sec:org523d33e}]{Пример}
 \[
 \begin{matrix}
   & SNP 1 & SNP 2 & SNP 3 & SNP 4 & SNP 5 & SNP 6 & SNP 7 & SNP 8 \\
@@ -87,7 +87,7 @@
 Спектр: \(\begin{pmatrix}4&2&1&0&1\end{pmatrix}\)
 \end{frame}
 
-\begin{frame}[label={sec:org9ed2044}]{Как это делается сейчас}
+\begin{frame}[label={sec:orga80aa78}]{Как это делается сейчас}
 \begin{block}{\dadi}
 \url{https://bitbucket.org/gutenkunstlab/dadi/}
 \begin{itemize}
@@ -116,7 +116,7 @@
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org58aa193}]{GADMA}
+\begin{frame}[label={sec:org87226f9}]{GADMA}
 \begin{block}{GADMA}
 \url{https://github.com/ctlab/GADMA}
 \begin{itemize}
@@ -128,7 +128,7 @@
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org2aac369}]{Что можно сделать}
+\begin{frame}[label={sec:org3661505}]{Что можно сделать}
 Давайте попробуем заменить генетический алгоритм на байесовскую оптимизацию
 \begin{block}{Байесовская оптимизация}
 \begin{itemize}
@@ -144,7 +144,13 @@
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org96c606a}]{Планы}
+\begin{frame}[label={sec:org74152c5}]{\xspace}
+\begin{center}
+\includegraphics[width=.9\linewidth]{./pics/conv.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[label={sec:orge6f7f5c}]{Планы}
 \begin{enumerate}
 \item (В процессе) Заменить в \dadi алгоритм градиентного спуска на байесовскую оптимизацию.
 \item Посмотреть станет ли лучше
@@ -152,7 +158,7 @@
 \end{enumerate}
 \end{frame}
 
-\begin{frame}[label={sec:orgc114d27}]{Конец}
+\begin{frame}[label={sec:org605b64e}]{Конец}
 \begin{center}
 Спасибо за внимание
 \end{center}

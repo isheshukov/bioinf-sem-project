@@ -96,6 +96,9 @@ https://github.com/ctlab/GADMA
 #+ATTR_LATEX: :width 1.5in
 [[./pics/bayes.png]]
 
+* \xspace
+[[./pics/conv.png]]
+
 * Планы
 1) (В процессе) Заменить в \dadi алгоритм градиентного спуска на байесовскую оптимизацию.
 2) Посмотреть станет ли лучше
