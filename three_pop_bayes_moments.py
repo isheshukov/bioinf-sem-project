@@ -4,11 +4,15 @@ from OutOfAfrica_moments import OutOfAfrica
 import GPy, GPyOpt
 import pylab
 import scipy
+import matplotlib.pyplot as plt
 
 # Numpy is the numerical library dadi is built upon
 from numpy import array, atleast_2d, log, exp
 from numpy.random import uniform
+from numpy import pad
 from scipy.optimize.slsqp import wrap_function
+
+from itertools import islice
 
 data = moments.Spectrum.from_file('YRI.CEU.CHB.fs')
 ns = data.sample_sizes
@@ -64,28 +68,66 @@ def optimize_bayes(p0, data, model_func, lower_bound=None, upper_bound=None,
 
     bounds = [{'domain': (l, u)} for l, u in zip(lower_bound, upper_bound)]
 
-    myProblem = GPyOpt.methods.BayesianOptimization(f_obj_wrapped,
-                                                    X=atleast_2d(p0),
-                                                    domain=bounds,
-                                                    acquisition_type='MPI',
-                                                    verbosity=True,
-                                                    maximize=False,
-                                                    #maxiter=50,
-                                                    num_cores=8,
-                                                    )
+    #myProblem = GPyOpt.methods.BayesianOptimization(f_obj_wrapped,
+    #                                                X=atleast_2d(p0),
+    #                                                domain=bounds,
+    #                                                acquisition_type='MPI',
+    #                                                verbosity=True,
+    #                                                maximize=False,
+    #                                                #maxiter=50,
+    #                                                num_cores=8,
+    #                                                #normalize_Y=True
+    #                                                )
 
-    myProblem.run_optimization(maxiter, verbosity=True)
+    #myProblem.run_optimization(maxiter, verbosity=True)
+    #myProblem.save_evaluations("evals.csv")
+    #myProblem.save_report("report.csv")
 
-    myProblem.plot_convergence()
+    #eval_X, eval_Y = myProblem.get_evaluations()
+
+    ###
+    ### ACQUISITION PROJECTION PLOTS
+    ###
+    model_parameters = ["nuAf", "nuB", "nuEu0", "nuEu", "nuAs0", "nuAs", "mAfB", "mAfEu", "mAfAs", "mEuAs", "TAf", "TB",
+                        "TEuAs"]
+
+    tot = len(model_parameters)
+    cols = 3
+    rows = tot // cols
+    rows += tot % cols
+    position = range(1, tot + 1)
+
+    # fig, axs = plt.subplots(rows, cols, figsize=(16,16), sharex=True)
+    #
+    # for k, (ax, X, variable) in enumerate(zip(axs.flat, eval_X.T, model_parameters)):
+    #     if k < tot:
+    #         ax.plot(range(len(X)), abs(X - pad(X, (1,0), mode='constant')[: -1]), 'ro-')
+    #         ax.set_title(variable)
+    #     else:
+    #         fig.delaxes(ax)
+    #
+    # fig.text(0.5, 0.01, "Iteration", ha="center", va="center")
+    # fig.text(0.01, 0.5, "|X_n - X_(n-1)|", ha="center", va="center", rotation=90)
+    #
+    # plt.tight_layout()
+    # #plt.show()
+    # plt.savefig("projections.pdf")
+
+    #myProblem.plot_convergence("moments_convergence.pdf")
     #xopt = BayesInference._project_params_up(exp(myProblem.x_opt), fixed_params)
-    xopt = BayesInference._project_params_up(myProblem.x_opt, fixed_params)
+    #xopt = BayesInference._project_params_up(myProblem.x_opt, fixed_params)
+
+    xopt = [1.00000000e-03, 1.00000000e+02, 1.00000000e-03, 1.00000000e-03,
+ 6.37305388e+01, 1.00000000e+02, 1.00000000e+01, 1.00000000e-04,
+ 1.00000000e-04, 1.00000000e+01, 3.00000000e+00, 1.00000000e-04,
+ 1.00000000e-04]
 
     outputs = scipy.optimize.fmin_bfgs(BayesInference._object_func, xopt,
-                                       epsilon=epsilon,
-                                       args=args, gtol=gtol,
-                                       full_output=True,
-                                       disp=False,
-                                       maxiter=maxiter)
+                                        epsilon=epsilon,
+                                        args=args, gtol=gtol,
+                                        full_output=True,
+                                        disp=False,
+                                        maxiter=maxiter)
     xopt, fopt, gopt, Bopt, func_calls, grad_calls, warnflag = outputs
     xopt = BayesInference._project_params_up(xopt, fixed_params)
 
@@ -98,7 +140,7 @@ print('MONKEY PATCHED BAYES START')
 popt = BayesInference.optimize(p0, data, func,
                                     lower_bound=lower_bound,
                                     upper_bound=upper_bound,
-                                    verbose=len(p0), maxiter=50)
+                                    verbose=len(p0), maxiter=100)
 print(popt)
 print('MONKEY PATCHED BAYES END')
 
@@ -140,7 +182,7 @@ fig.clear()
 moments.Plotting.plot_3d_comp_multinom(model, data, vmin=1)
 fig.savefig('gpyopt_3d_comp.png')
 
-pylab.show()
+#pylab.show()
 
 
 
