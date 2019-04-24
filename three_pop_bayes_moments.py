@@ -2,17 +2,68 @@ from __future__ import print_function
 import moments 
 from OutOfAfrica_moments import OutOfAfrica
 import GPy, GPyOpt
-import pylab
-import scipy
+import numpy as np
+from pylab import grid
 import matplotlib.pyplot as plt
-
-# Numpy is the numerical library dadi is built upon
+from pylab import savefig
+import pylab
 from numpy import array, atleast_2d, log, exp
 from numpy.random import uniform
-from numpy import pad
-from scipy.optimize.slsqp import wrap_function
 
-from itertools import islice
+def plot_acquisition(bounds,model,Xdata,Ydata,acquisition_function,suggested_sample, filename = None):
+    '''
+    Plots of the model and the acquisition function in 1D and 2D examples.
+    '''
+
+    input_dim = 1
+
+    x_grid = np.array([np.linspace(b[0], b[1], num=1000) for b in bounds]).T
+    print("x_grid shape:", x_grid.shape)
+    acqu = acquisition_function(x_grid)
+    print("acqu shape:", acqu.shape)
+    acqu_normalized = (-acqu - np.min(-acqu))/(np.max(-acqu - np.min(-acqu)))
+    print("acqu_normalized shape:", acqu_normalized.shape)
+
+    px = x_grid[:, 0].reshape(x_grid.shape[0], 1)
+
+    print(px)
+
+    m, v = model.predict(x_grid.T)
+    #print(m - 1.96 * np.sqrt(v))
+    print("m shape:", m.shape)
+    print("v shape:", v.shape)
+    print("px shape:", px.shape)
+    print("bounds shape:", bounds[0])
+    model.plot_density(bounds[0], visible_dims=[0], alpha=.5)
+
+    #print("Xdata", Xdata)
+    #x_grid = x_grid[0].reshape(len(x_grid[0]), 1)
+
+    plt.plot(px, m, 'k-',lw=1,alpha = 0.6)
+    plt.plot(px, m-1.96*np.sqrt(v), 'k-', alpha = 0.2)
+    plt.plot(px, m+1.96*np.sqrt(v), 'k-', alpha=0.2)
+
+    plt.plot(Xdata[:, 0], Ydata, 'r.', markersize=10)
+
+    print("sug sample shape:", suggested_sample.shape)
+    print("sug sample", suggested_sample)
+
+    plt.axvline(x=atleast_2d(suggested_sample[0][0]), color='r')
+    factor = np.max(m + 1.96 * np.sqrt(v)) - np.min(m - 1.96 * np.sqrt(v))
+
+    plt.plot(px, 0.2 * factor * acqu_normalized - abs(np.min(m - 1.96 * np.sqrt(v))) - 0.25 * factor, 'r-', lw=2,
+             label='Acquisition (arbitrary units)')
+    plt.xlabel('x')
+    plt.ylabel('f(x)')
+    plt.ylim(np.min(m - 1.96 * np.sqrt(v)) - 0.25 * factor, np.max(m + 1.96 * np.sqrt(v)) + 0.05 * factor)
+    plt.axvline(x=atleast_2d(suggested_sample[0][0]), color='r')
+    plt.legend(loc='upper left')
+
+    if filename!=None:
+        savefig(filename)
+    else:
+        plt.show()
+
 
 data = moments.Spectrum.from_file('YRI.CEU.CHB.fs')
 ns = data.sample_sizes
@@ -68,22 +119,22 @@ def optimize_bayes(p0, data, model_func, lower_bound=None, upper_bound=None,
 
     bounds = [{'domain': (l, u)} for l, u in zip(lower_bound, upper_bound)]
 
-    #myProblem = GPyOpt.methods.BayesianOptimization(f_obj_wrapped,
-    #                                                X=atleast_2d(p0),
-    #                                                domain=bounds,
-    #                                                acquisition_type='MPI',
-    #                                                verbosity=True,
-    #                                                maximize=False,
-    #                                                #maxiter=50,
-    #                                                num_cores=8,
-    #                                                #normalize_Y=True
-    #                                                )
+    myProblem = GPyOpt.methods.BayesianOptimization(f_obj_wrapped,
+                                                    X=atleast_2d(p0),
+                                                    domain=bounds,
+                                                    acquisition_type='MPI',
+                                                    verbosity=True,
+                                                    maximize=False,
+                                                    #maxiter=50,
+                                                    num_cores=8,
+                                                    #normalize_Y=True
+                                                    )
 
-    #myProblem.run_optimization(maxiter, verbosity=True)
-    #myProblem.save_evaluations("evals.csv")
-    #myProblem.save_report("report.csv")
+    myProblem.run_optimization(maxiter, verbosity=True)
+    myProblem.save_evaluations("evals.csv")
+    myProblem.save_report("report.csv")
 
-    #eval_X, eval_Y = myProblem.get_evaluations()
+    eval_X, eval_Y = myProblem.get_evaluations()
 
     ###
     ### ACQUISITION PROJECTION PLOTS
@@ -97,39 +148,36 @@ def optimize_bayes(p0, data, model_func, lower_bound=None, upper_bound=None,
     rows += tot % cols
     position = range(1, tot + 1)
 
-    # fig, axs = plt.subplots(rows, cols, figsize=(16,16), sharex=True)
-    #
-    # for k, (ax, X, variable) in enumerate(zip(axs.flat, eval_X.T, model_parameters)):
-    #     if k < tot:
-    #         ax.plot(range(len(X)), abs(X - pad(X, (1,0), mode='constant')[: -1]), 'ro-')
-    #         ax.set_title(variable)
-    #     else:
-    #         fig.delaxes(ax)
-    #
-    # fig.text(0.5, 0.01, "Iteration", ha="center", va="center")
-    # fig.text(0.01, 0.5, "|X_n - X_(n-1)|", ha="center", va="center", rotation=90)
-    #
-    # plt.tight_layout()
-    # #plt.show()
-    # plt.savefig("projections.pdf")
+    if myProblem.model.model is None:
+        from copy import deepcopy
+        model_to_plot = deepcopy(myProblem.model)
+        if myProblem.normalize_Y:
+            Y = myProblem.normalize(myProblem.Y, myProblem.normalization_type)
+        else:
+            Y = myProblem.Y
+        model_to_plot.updateModel(myProblem.X, Y, myProblem.X, Y)
+    else:
+        model_to_plot = myProblem.model
 
-    #myProblem.plot_convergence("moments_convergence.pdf")
-    #xopt = BayesInference._project_params_up(exp(myProblem.x_opt), fixed_params)
+    plot_acquisition(myProblem.acquisition.space.get_bounds(),
+                     model_to_plot.model,
+                     model_to_plot.model.X,
+                     model_to_plot.model.Y,
+                     myProblem.acquisition.acquisition_function,
+                     myProblem.suggest_next_locations(), None)
+
+    xopt = BayesInference._project_params_up(exp(myProblem.x_opt), fixed_params)
     #xopt = BayesInference._project_params_up(myProblem.x_opt, fixed_params)
 
-    xopt = [1.00000000e-03, 1.00000000e+02, 1.00000000e-03, 1.00000000e-03,
- 6.37305388e+01, 1.00000000e+02, 1.00000000e+01, 1.00000000e-04,
- 1.00000000e-04, 1.00000000e+01, 3.00000000e+00, 1.00000000e-04,
- 1.00000000e-04]
 
-    outputs = scipy.optimize.fmin_bfgs(BayesInference._object_func, xopt,
-                                        epsilon=epsilon,
-                                        args=args, gtol=gtol,
-                                        full_output=True,
-                                        disp=False,
-                                        maxiter=maxiter)
-    xopt, fopt, gopt, Bopt, func_calls, grad_calls, warnflag = outputs
-    xopt = BayesInference._project_params_up(xopt, fixed_params)
+    #outputs = scipy.optimize.fmin_bfgs(BayesInference._object_func, xopt,
+    #                                    epsilon=epsilon,
+    #                                    args=args, gtol=gtol,
+    #                                    full_output=True,
+    #                                    disp=False,
+    #                                    maxiter=maxiter)
+    #xopt, fopt, gopt, Bopt, func_calls, grad_calls, warnflag = outputs
+    #xopt = BayesInference._project_params_up(xopt, fixed_params)
 
 
     return xopt
@@ -140,7 +188,7 @@ print('MONKEY PATCHED BAYES START')
 popt = BayesInference.optimize(p0, data, func,
                                     lower_bound=lower_bound,
                                     upper_bound=upper_bound,
-                                    verbose=len(p0), maxiter=100)
+                                    verbose=1, maxiter=4)
 print(popt)
 print('MONKEY PATCHED BAYES END')
 
