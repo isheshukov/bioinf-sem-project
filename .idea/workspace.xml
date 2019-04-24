@@ -2,16 +2,50 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="092a7f82-d631-4fe9-9f3f-088631ab6f90" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sem-project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sem-project.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/BayesOpt.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/acquisition_ndim.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evals.csv" beforeDir="false" afterPath="$PROJECT_DIR$/evals.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gpyopt_1d_comp.png" beforeDir="false" afterPath="$PROJECT_DIR$/gpyopt_1d_comp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gpyopt_2d_comp.png" beforeDir="false" afterPath="$PROJECT_DIR$/gpyopt_2d_comp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gpyopt_3d_comp.png" beforeDir="false" afterPath="$PROJECT_DIR$/gpyopt_3d_comp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/org/gadma.org" beforeDir="false" afterPath="$PROJECT_DIR$/org/gadma.org" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report.csv" beforeDir="false" afterPath="$PROJECT_DIR$/report.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1d_comp.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2d_comp.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2d_single.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/3d_comp.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inference.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OutOfAfrica.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/OutOfAfrica.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OutOfAfrica_moments.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/OutOfAfrica_moments.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YRI.CEU.CHB.fs" beforeDir="false" afterPath="$PROJECT_DIR$/lib/YRI.CEU.CHB.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evals.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gpyopt_1d_comp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gpyopt_2d_comp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gpyopt_2d_single.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gpyopt_3d_comp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mom_e/Figure_1-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mom_e/Figure_2-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mom_e/Figure_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mom_e/Figure_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mom_e/Figure_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mom_e/YRI.CEU.CHB.fs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mom_e/bfgs/Figure_1-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mom_e/bfgs/Figure_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mom_e/bfgs/Figure_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mom_e/bfgs/Figure_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mom_e/bfgs/Figure_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mom_e/bfgs/YRI.CEU.CHB.fs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mom_e/bfgs/gpyopt_1d_comp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mom_e/bfgs/gpyopt_2d_comp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mom_e/bfgs/gpyopt_2d_single.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mom_e/bfgs/gpyopt_3d_comp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mom_e/gpyopt_1d_comp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mom_e/gpyopt_2d_comp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mom_e/gpyopt_2d_single.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mom_e/gpyopt_3d_comp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/moments_convergence.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pipfreeze.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projections.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/report.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/three_pop_bayes.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/three_pop_bayes_moments.py" beforeDir="false" afterPath="$PROJECT_DIR$/three_pop_bayes_moments.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/three_pop_bayes_moments_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/acquisition_plot_test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,99 +71,41 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/org/gadma.org">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="339">
-                  <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/three_pop_bayes_moments.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="198">
-                  <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-                  <folding>
-                    <element signature="e#0#37#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$USER_HOME$/.pyenv/versions/semproject/lib/python2.7/site-packages/GPy-1.9.6-py2.7-linux-x86_64.egg/GPy/models/input_warped_gp.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="81">
-                  <caret line="125" column="8" selection-start-line="125" selection-start-column="8" selection-end-line="125" selection-end-column="8" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/three_pop_bayes_moments_test.py">
-              <provider selected="true" editor-type-id="text-editor" />
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../dadi/venv/local/lib/python2.7/site-packages/bayes_opt/bayesian_optimization.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2088">
-                  <caret line="125" column="36" selection-start-line="125" selection-start-column="32" selection-end-line="125" selection-end-column="36" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../dadi/venv/local/lib/python2.7/site-packages/GPyOpt/methods/bayesian_optimization.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2178">
-                  <caret line="137" column="25" selection-start-line="137" selection-start-column="13" selection-end-line="137" selection-end-column="25" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="jar://$PROJECT_DIR$/../dadi/venv/local/lib/python2.7/site-packages/dadi-1.7.0-py2.7-linux-x86_64.egg!/dadi/Numerics.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="5994">
-                  <caret line="333" column="28" selection-start-line="333" selection-start-column="28" selection-end-line="333" selection-end-column="28" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Inference.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="16182">
-                  <caret line="899" column="49" selection-start-line="899" selection-end-line="900" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/three_pop_bayes_moments_test.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="342">
-                  <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
-                  <folding>
-                    <element signature="e#0#47#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/org/gadma.org">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="636">
+              <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/three_pop_bayes_moments.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/BayesOpt.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="774">
+              <caret line="43" column="35" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -159,8 +135,10 @@
         <option value="$PROJECT_DIR$/3popbayes.py" />
         <option value="$PROJECT_DIR$/three_pop_bayes.py" />
         <option value="$PROJECT_DIR$/three_pop_bayes_moments_test.py" />
-        <option value="$PROJECT_DIR$/three_pop_bayes_moments.py" />
         <option value="$PROJECT_DIR$/org/gadma.org" />
+        <option value="$PROJECT_DIR$/lib/acquisition_ndim.py" />
+        <option value="$PROJECT_DIR$/three_pop_bayes_moments.py" />
+        <option value="$PROJECT_DIR$/lib/BayesOpt.py" />
       </list>
     </option>
   </component>
@@ -187,7 +165,7 @@
             <path>
               <item name="sem-project" type="b2602c69:ProjectViewProjectNode" />
               <item name="sem-project" type="462c0819:PsiDirectoryNode" />
-              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -204,6 +182,9 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -288,13 +269,16 @@
       <module name="sem-project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/../dadi/venv/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/three_pop_bayes_moments_test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/acquisition_plot_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -335,16 +319,18 @@
       <workItem from="1555855947119" duration="3047000" />
       <workItem from="1555881905545" duration="7207000" />
       <workItem from="1555952197398" duration="12511000" />
+      <workItem from="1556105419130" duration="3095000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97473000" />
+    <option name="totallyTimeSpent" value="100568000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="52" y="32" width="1868" height="1048" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11117196" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16648412" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -359,7 +345,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32897604" />
-      <window_info anchor="bottom" id="Python Console" order="12" visible="true" weight="0.3478735" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.3478735" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -375,23 +361,6 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/three_pop_bayes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1110">
-          <caret line="86" column="36" selection-start-line="86" selection-end-line="87" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/report.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="15" selection-start-line="34" selection-start-column="15" selection-end-line="34" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/evals.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -399,7 +368,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OutOfAfrica.py">
+    <entry file="file://$PROJECT_DIR$/lib/OutOfAfrica.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
@@ -418,41 +387,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharm2019.1/system/python_stubs/-1078112419/numpy/core/_multiarray_umath.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3564">
-          <caret line="198" column="4" selection-start-line="198" selection-start-column="4" selection-end-line="198" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../dadi/venv/local/lib/python2.7/site-packages/bayes_opt/bayesian_optimization.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2088">
-          <caret line="125" column="36" selection-start-line="125" selection-start-column="32" selection-end-line="125" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../dadi/venv/local/lib/python2.7/site-packages/GPyOpt/methods/bayesian_optimization.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2178">
-          <caret line="137" column="25" selection-start-line="137" selection-start-column="13" selection-end-line="137" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../dadi/venv/local/lib/python2.7/site-packages/dadi-1.7.0-py2.7-linux-x86_64.egg!/dadi/Numerics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5994">
-          <caret line="333" column="28" selection-start-line="333" selection-start-column="28" selection-end-line="333" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Inference.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16182">
-          <caret line="899" column="49" selection-start-line="899" selection-end-line="900" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2019.1/system/python_stubs/-1078112419/numpy/core/_multiarray_umath.py" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_bundle/pydev_import_hook.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="436">
@@ -481,30 +416,124 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/three_pop_bayes_moments_test.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$USER_HOME$/.pyenv/versions/semproject/lib/python2.7/site-packages/GPy-1.9.6-py2.7-linux-x86_64.egg/GPy/models/input_warped_gp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
+        <state relative-caret-position="2160">
           <caret line="125" column="8" selection-start-line="125" selection-start-column="8" selection-end-line="125" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/three_pop_bayes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="11" lean-forward="true" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/report.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="15" selection-start-line="34" selection-start-column="15" selection-end-line="34" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pipfreeze.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/Inference.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9000">
+          <caret line="899" column="49" selection-start-line="899" selection-end-line="900" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../dadi/venv/local/lib/python2.7/site-packages/dadi-1.7.0-py2.7-linux-x86_64.egg!/dadi/Numerics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="509">
+          <caret line="333" column="28" selection-start-line="333" selection-start-column="28" selection-end-line="333" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../dadi/venv/local/lib/python2.7/site-packages/GPyOpt/methods/bayesian_optimization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="509">
+          <caret line="137" column="25" selection-start-line="137" selection-start-column="13" selection-end-line="137" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../dadi/venv/local/lib/python2.7/site-packages/bayes_opt/bayesian_optimization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="509">
+          <caret line="125" column="36" selection-start-line="125" selection-start-column="32" selection-end-line="125" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/OutOfAfrica_moments.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="12" lean-forward="true" selection-start-column="12" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.pyenv/versions/semproject/lib/python2.7/site-packages/UNKNOWN-0.0.0-py2.7-linux-x86_64.egg!/moments/Inference.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-792">
+          <caret line="946" column="4" selection-start-line="946" selection-start-column="4" selection-end-line="946" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/acquisition_plot_test.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/org/gadma.org">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="636">
+          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/three_pop_bayes_moments.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="126">
+          <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/org/gadma.org">
+    <entry file="file://$PROJECT_DIR$/lib/acquisition_ndim.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+        <state>
+          <caret lean-forward="true" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/BayesOpt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="774">
+          <caret line="43" column="35" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
