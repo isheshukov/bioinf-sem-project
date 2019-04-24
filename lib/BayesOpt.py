@@ -45,8 +45,8 @@ def optimize(p0, data, model_func, lower_bound=None, upper_bound=None,
 
     myProblem.plot_acquisition("plots/acquisition.png")
     myProblem.plot_convergence("plots/convergence.png")
-    myProblem.save_evaluations("reports/evals.csv")
-    myProblem.save_report("reports/report.csv")
+    myProblem.save_evaluations("reports/evals.tsv")
+    myProblem.save_report("reports/report.txt")
 
     xopt = BayesInference._project_params_up(myProblem.x_opt, fixed_params)
 
