@@ -7,7 +7,7 @@ BayesInference = moments.Inference
 
 def optimize(p0, data, model_func, lower_bound=None, upper_bound=None,
              verbose=0, flush_delay=0.5, epsilon=1e-3,
-             gtol=1e-5, multinom=True, maxiter=0, full_output=False,
+             gtol=1e-5, multinom=True, maxiter=1000, full_output=False,
              func_args=[], func_kwargs={}, fixed_params=None, ll_scale=1,
              output_file=None):
 
@@ -38,7 +38,7 @@ def optimize(p0, data, model_func, lower_bound=None, upper_bound=None,
                                                     acquisition_type='MPI',
                                                     verbosity=True,
                                                     maximize=False,
-                                                    num_cores=8
+                                                    num_cores=24
                                                     )
 
     myProblem.run_optimization(maxiter, verbosity=True)

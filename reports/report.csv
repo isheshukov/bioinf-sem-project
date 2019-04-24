@@ -1,10 +1,10 @@
 ----------------------------- GPyOpt Report file -----------------------------------
 GPyOpt Version 1.2.5
-Date and time:               Wed Apr 24 15:40:00 2019
-Optimization completed:      NO,101 samples collected.
+Date and time:               Wed Apr 24 17:56:59 2019
+Optimization completed:      NO,1001 samples collected.
 Number initial samples:      5 
 Tolerance:                   1e-08.
-Optimization time:           296.374220848 seconds.
+Optimization time:           16375.4753449 seconds.
 
 -------------------------------- Problem set up ------------------------------------
 Problem name:                no_name
@@ -25,9 +25,9 @@ Acquisition optimizer:       lbfgs
 Acquisition type:            MPI
 Acquisition optimizer:       lbfgs
 Evaluator type (batch size): sequential (1)
-Cores used:                  8
+Cores used:                  24
 
 --------------------------------- Summary ------------------------------------------
-Value at minimum:            8852.08436942
-Best found minimum location: 70.65072816  0.27177341
+Value at minimum:            6316.71634436
+Best found minimum location: 1.69859043 0.28894069
 ----------------------------------------------------------------------------------------------

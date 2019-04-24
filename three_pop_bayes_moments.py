@@ -28,7 +28,6 @@ popt = BayesOpt.optimize(p0, data, func,
                          lower_bound=lower_bound,
                          upper_bound=upper_bound,
                          verbose=1,
-                         maxiter=100,
                          fixed_params=popt1)
 print(popt)
 
