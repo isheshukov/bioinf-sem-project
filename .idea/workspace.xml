@@ -2,50 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="092a7f82-d631-4fe9-9f3f-088631ab6f90" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/BayesOpt.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/acquisition_ndim.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1d_comp.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2d_comp.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2d_single.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/3d_comp.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inference.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutOfAfrica.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/OutOfAfrica.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutOfAfrica_moments.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/OutOfAfrica_moments.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YRI.CEU.CHB.fs" beforeDir="false" afterPath="$PROJECT_DIR$/lib/YRI.CEU.CHB.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evals.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gpyopt_1d_comp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gpyopt_2d_comp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gpyopt_2d_single.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gpyopt_3d_comp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mom_e/Figure_1-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mom_e/Figure_2-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mom_e/Figure_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mom_e/Figure_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mom_e/Figure_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mom_e/YRI.CEU.CHB.fs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mom_e/bfgs/Figure_1-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mom_e/bfgs/Figure_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mom_e/bfgs/Figure_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mom_e/bfgs/Figure_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mom_e/bfgs/Figure_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mom_e/bfgs/YRI.CEU.CHB.fs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mom_e/bfgs/gpyopt_1d_comp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mom_e/bfgs/gpyopt_2d_comp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mom_e/bfgs/gpyopt_2d_single.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mom_e/bfgs/gpyopt_3d_comp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mom_e/gpyopt_1d_comp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mom_e/gpyopt_2d_comp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mom_e/gpyopt_2d_single.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mom_e/gpyopt_3d_comp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/moments_convergence.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pipfreeze.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projections.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/report.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/three_pop_bayes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/BayesOpt.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/BayesOpt.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/three_pop_bayes_moments.py" beforeDir="false" afterPath="$PROJECT_DIR$/three_pop_bayes_moments.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/three_pop_bayes_moments_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/acquisition_plot_test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/three_pop_bayes_moments.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
+            <state relative-caret-position="369">
+              <caret line="43" column="50" selection-start-line="43" selection-start-column="50" selection-end-line="43" selection-end-column="50" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -93,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/BayesOpt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="774">
-              <caret line="43" column="35" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
+            <state relative-caret-position="117">
+              <caret line="48" column="47" selection-start-line="48" selection-start-column="47" selection-end-line="48" selection-end-column="47" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -137,8 +95,8 @@
         <option value="$PROJECT_DIR$/three_pop_bayes_moments_test.py" />
         <option value="$PROJECT_DIR$/org/gadma.org" />
         <option value="$PROJECT_DIR$/lib/acquisition_ndim.py" />
-        <option value="$PROJECT_DIR$/three_pop_bayes_moments.py" />
         <option value="$PROJECT_DIR$/lib/BayesOpt.py" />
+        <option value="$PROJECT_DIR$/three_pop_bayes_moments.py" />
       </list>
     </option>
   </component>
@@ -166,6 +124,11 @@
               <item name="sem-project" type="b2602c69:ProjectViewProjectNode" />
               <item name="sem-project" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sem-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sem-project" type="462c0819:PsiDirectoryNode" />
+              <item name="plots" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -319,12 +282,12 @@
       <workItem from="1555855947119" duration="3047000" />
       <workItem from="1555881905545" duration="7207000" />
       <workItem from="1555952197398" duration="12511000" />
-      <workItem from="1556105419130" duration="3095000" />
+      <workItem from="1556105419130" duration="4289000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100568000" />
+    <option name="totallyTimeSpent" value="101762000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="52" y="32" width="1868" height="1048" extended-state="6" />
@@ -345,11 +308,11 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32897604" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.3478735" />
+      <window_info anchor="bottom" id="Python Console" order="12" visible="true" weight="0.42202836" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" x="163" y="484" width="1750" height="573" id="SciView" order="3" sideWeight="0.8527919" type="WINDOWED" weight="0.2935378" />
+      <window_info anchor="right" x="95" y="243" width="1770" height="559" id="SciView" order="3" sideWeight="0.8527919" type="WINDOWED" weight="0.2935378" />
       <window_info anchor="right" x="0" y="0" width="414" height="848" id="Documentation" order="4" sideWeight="0.14720812" side_tool="true" visible="true" weight="0.016538037" />
       <window_info anchor="right" id="Database" order="5" weight="0.3296582" />
     </layout>
@@ -490,32 +453,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.pyenv/versions/semproject/lib/python2.7/site-packages/UNKNOWN-0.0.0-py2.7-linux-x86_64.egg!/moments/Inference.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-792">
-          <caret line="946" column="4" selection-start-line="946" selection-start-column="4" selection-end-line="946" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/acquisition_plot_test.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/org/gadma.org">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="636">
-          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/three_pop_bayes_moments.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/acquisition_ndim.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -527,12 +466,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/org/gadma.org">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="636">
+          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.pyenv/versions/semproject/lib/python2.7/site-packages/UNKNOWN-0.0.0-py2.7-linux-x86_64.egg!/moments/Inference.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1170">
+          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plots/acquisition.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plots/convergence.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/BayesOpt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="774">
-          <caret line="43" column="35" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
+        <state relative-caret-position="117">
+          <caret line="48" column="47" selection-start-line="48" selection-start-column="47" selection-end-line="48" selection-end-column="47" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/three_pop_bayes_moments.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="43" column="50" selection-start-line="43" selection-start-column="50" selection-end-line="43" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>

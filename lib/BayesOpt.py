@@ -27,7 +27,10 @@ def optimize(p0, data, model_func, lower_bound=None, upper_bound=None,
     # Fixing parameters. Not sure if will work with gpy
     p0 = BayesInference._project_params_down(p0, fixed_params)
 
-    bounds = [{'domain': (l, u)} for l, u in zip(lower_bound, upper_bound)]
+    if fixed_params is None:
+        bounds = [{'domain': (l, u)} for l, u in zip(lower_bound, upper_bound)]
+    else:
+        bounds = [{'domain': (l, u)} for l, u, p in zip(lower_bound, upper_bound, fixed_params) if p is None]
 
     myProblem = GPyOpt.methods.BayesianOptimization(f_obj_wrapped,
                                                     X=np.atleast_2d(p0),
@@ -40,10 +43,10 @@ def optimize(p0, data, model_func, lower_bound=None, upper_bound=None,
 
     myProblem.run_optimization(maxiter, verbosity=True)
 
+    myProblem.plot_acquisition("plots/acquisition.png")
+    myProblem.plot_convergence("plots/convergence.png")
     myProblem.save_evaluations("reports/evals.csv")
     myProblem.save_report("reports/report.csv")
-
-
 
     xopt = BayesInference._project_params_up(myProblem.x_opt, fixed_params)
 
