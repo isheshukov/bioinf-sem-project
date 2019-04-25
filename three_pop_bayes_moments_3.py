@@ -22,7 +22,7 @@ p0 = [uniform(l, u) for l, u in zip(lower_bound, upper_bound)]
 
 # Fixing first two params
 # popt1 = [1.68, 0.287, 0.129, 3.74, 0.070, 7.29, 3.65, 0.44, 0.28, 1.4, 0.211, 0.338, 0.058]
-popt1 = [1.68, None, 0.129, 3.74, 0.070, 7.29, 3.65, None, 0.28, 1.4, 0.211, 0.338, 0.058]
+popt1 = [1.68, 0.287, None, None, 0.070, 7.29, 3.65, 0.44, 0.28, 1.4, 0.211, None, 0.058]
 print('Beginning optimization ************************************************')
 
 popt = BayesOpt.optimize(p0, data, func,
@@ -31,7 +31,7 @@ popt = BayesOpt.optimize(p0, data, func,
                          verbose=1,
                          maxiter=3000,
                          fixed_params=popt1,
-                         output_dir='fixed2')
+                         output_dir='fixed3')
 print(popt)
 
 print('Finshed optimization **************************************************')
