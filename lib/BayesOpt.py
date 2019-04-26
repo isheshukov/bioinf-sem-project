@@ -1,6 +1,8 @@
 import moments
 import numpy as np
 import GPyOpt
+import os
+from pathlib2 import Path
 
 BayesInference = moments.Inference
 
@@ -24,7 +26,7 @@ def optimize(p0, data, model_func, lower_bound=None, upper_bound=None,
             multinom, flush_delay, func_args, func_kwargs, fixed_params,
             ll_scale, output_stream)
 
-    # Fixing parameters. Not sure if will work with gpy
+    # Fixing parameters. 
     p0 = BayesInference._project_params_down(p0, fixed_params)
 
     if fixed_params is None:
@@ -43,23 +45,25 @@ def optimize(p0, data, model_func, lower_bound=None, upper_bound=None,
 
     myProblem.run_optimization(maxiter, verbosity=True)
 
-    _out_dir = ("out" + output_dir + "/") if output_dir is not None else ""
-    myProblem.plot_acquisition(_out_dir +  "plots/acquisition.png")
-    myProblem.plot_convergence(_out_dir + "plots/convergence.png")
-    myProblem.save_evaluations(_out_dir + "reports/evals.tsv")
-    myProblem.save_report(_out_dir + "reports/report.txt")
+    out_dir_path = Path('out') / output_dir
+    plots_dir = out_dir_path / "plots"
+    reports_dir = out_dir_path / "reports"
+
+    plots_dir.mkdir(parents=True, exist_ok=True)
+    reports_dir.mkdir(parents=True, exist_ok=True)
+
+    myProblem.plot_acquisition((plots_dir / "acquisition.png").as_posix())
+    myProblem.plot_convergence((plots_dir / "convergence.png").as_posix())
+    myProblem.save_evaluations((reports_dir / "evals.tsv").as_posix())
+    myProblem.save_report((reports_dir / "report.txt").as_posix())
 
     xopt = BayesInference._project_params_up(myProblem.x_opt, fixed_params)
-    xopt = BayesInference._project_params_down(xopt, fixed_params)
-
-    outputs = scipy.optimize.fmin_bfgs(BayesInference._object_func, xopt,
-                                       epsilon=epsilon,
-                                       args=args, gtol=gtol,
-                                       full_output=True,
-                                       disp=False,
-                                       maxiter=maxiter,
-                                       fixed_params=fixed_params)
-    xopt, fopt, gopt, Bopt, func_calls, grad_calls, warnflag = outputs
-    xopt = BayesInference._project_params_up(xopt, fixed_params)
-
+   
+    # comment this is fmin_bfgs is not needed
+    xopt = moments.Inference.optimize(xopt, data, model_func,
+                                      lower_bound=lower_bound,
+                                      upper_bound=upper_bound,
+                                      fixed_params=fixed_params,
+                                      maxiter=maxiter,
+                                      verbose=1)
     return xopt
