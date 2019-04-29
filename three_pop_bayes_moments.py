@@ -28,11 +28,12 @@ print('Beginning optimization ************************************************')
 popt = BayesOpt.optimize(p0, data, func,
                          lower_bound=lower_bound,
                          upper_bound=upper_bound,
-                         verbose=1, # print to stdin every k-th line
-                         maxiter=5, # for both gpyopt and moments.optimize
+                         verbose=1,    # print to stdin every k-th line
+                         maxiter=100,  # for both gpyopt and moments.optimize
                          fixed_params=popt1,
-                         output_dir='fixed1',
-                         plot_every=1)
+                         output_dir='cont_acq',
+                         plot_every=1, # plot currenct acquisition
+                         use_bfgs=False)
 print(popt)
 
 print('Finshed optimization **************************************************')
