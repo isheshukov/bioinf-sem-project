@@ -11,7 +11,7 @@ def optimize(p0, data, model_func, lower_bound=None, upper_bound=None,
              verbose=0, flush_delay=0.5, epsilon=1e-3,
              gtol=1e-5, multinom=True, maxiter=1000, full_output=False,
              func_args=[], func_kwargs={}, fixed_params=None, ll_scale=1,
-             output_file=None, output_dir=None):
+             output_file=None, output_dir=None, plot_every=None):
 
     # passing all parameters to objective function, because gpyopt can't do it itself
     def f_obj_wrapped(x):
@@ -34,30 +34,43 @@ def optimize(p0, data, model_func, lower_bound=None, upper_bound=None,
     else:
         bounds = [{'domain': (l, u)} for l, u, p in zip(lower_bound, upper_bound, fixed_params) if p is None]
 
-    myProblem = GPyOpt.methods.BayesianOptimization(f_obj_wrapped,
-                                                    X=np.atleast_2d(p0),
-                                                    domain=bounds,
-                                                    acquisition_type='MPI',
-                                                    verbosity=True,
-                                                    maximize=False,
-                                                    num_cores=24
-                                                    )
-
-    myProblem.run_optimization(maxiter, verbosity=True)
-
     out_dir_path = Path('out') / output_dir
     plots_dir = out_dir_path / "plots"
+    acquisition_dir = plots_dir / "acquisitions"
     reports_dir = out_dir_path / "reports"
 
     plots_dir.mkdir(parents=True, exist_ok=True)
+    acquisition_dir.mkdir(parents=True, exist_ok=True)
     reports_dir.mkdir(parents=True, exist_ok=True)
 
-    myProblem.plot_acquisition((plots_dir / "acquisition.png").as_posix())
-    myProblem.plot_convergence((plots_dir / "convergence.png").as_posix())
-    myProblem.save_evaluations((reports_dir / "evals.tsv").as_posix())
-    myProblem.save_report((reports_dir / "report.txt").as_posix())
+    # Running optimization in a loop. Plot acquisition graph every
+    # `plot_every` iteration
+    X_step = np.atleast_2d(p0)
+    for current_iter in range(maxiter):
+        opt = GPyOpt.methods.BayesianOptimization(f_obj_wrapped,
+                                                  X=X_step,
+                                                  domain=bounds,
+                                                  acquisition_type='MPI',
+                                                  verbosity=True,
+                                                  maximize=False,
+                                                  num_cores=8
+                                                  )
 
-    xopt = BayesInference._project_params_up(myProblem.x_opt, fixed_params)
+        x_next = opt.suggest_next_locations()
+        X_step = np.vstack((X_step, x_next))
+
+        if plot_every is not None:
+            if (current_iter % plot_every == 0):
+                opt.plot_acquisition(
+                    (acquisition_dir / 'acquisition_{0:04d}'.format(current_iter)).as_posix()
+                    )
+
+    opt.plot_acquisition((plots_dir / "acquisition.png").as_posix())
+    opt.plot_convergence((plots_dir / "convergence.png").as_posix())
+    opt.save_evaluations((reports_dir / "evals.tsv").as_posix())
+    opt.save_report((reports_dir / "report.txt").as_posix())
+
+    xopt = BayesInference._project_params_up(opt.x_opt, fixed_params)
    
     # comment this is fmin_bfgs is not needed
     xopt = moments.Inference.optimize(xopt, data, model_func,

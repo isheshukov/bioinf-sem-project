@@ -31,7 +31,8 @@ popt = BayesOpt.optimize(p0, data, func,
                          verbose=1, # print to stdin every k-th line
                          maxiter=5, # for both gpyopt and moments.optimize
                          fixed_params=popt1,
-                         output_dir='fixed1')
+                         output_dir='fixed1',
+                         plot_every=1)
 print(popt)
 
 print('Finshed optimization **************************************************')
