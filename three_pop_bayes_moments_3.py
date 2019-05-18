@@ -1,7 +1,7 @@
 from __future__ import print_function
 
 import moments
-from numpy.random import uniform
+from numpy.random import uniform, triangular
 import lib.BayesOpt as BayesOpt
 import pylab
 
@@ -18,11 +18,13 @@ upper_bound = [100, 100, 100, 100, 100, 100, 10, 10, 10, 10, 3, 3, 3]
 lower_bound = [1e-3, 1e-3, 1e-3, 1e-3, 1e-3, 1e-3, 1e-4, 1e-4, 1e-4, 1e-4, 1e-4, 1e-4, 1e-4]
 
 func = OutOfAfrica
-p0 = [uniform(l, u) for l, u in zip(lower_bound, upper_bound)]
+#p0 = [uniform(l, u) for l, u in zip(lower_bound, upper_bound)]
+p0 = [triangular(l, 1, u) for l, u in zip(lower_bound, upper_bound)]
 
 # Fixing first two params
 # popt1 = [1.68, 0.287, 0.129, 3.74, 0.070, 7.29, 3.65, 0.44, 0.28, 1.4, 0.211, 0.338, 0.058]
 popt1 = [1.68, 0.287, None, None, 0.070, 7.29, 3.65, 0.44, 0.28, 1.4, 0.211, None, 0.058]
+#popt1 = np.log(pop1)
 print('Beginning optimization ************************************************')
 
 popt = BayesOpt.optimize(p0, data, func,
@@ -31,7 +33,8 @@ popt = BayesOpt.optimize(p0, data, func,
                          verbose=1,
                          maxiter=3000,
                          fixed_params=popt1,
-                         output_dir='fixed3')
+                         output_dir='fixed3-EI',
+                         plot_every=1)
 print(popt)
 
 print('Finshed optimization **************************************************')
