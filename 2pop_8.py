@@ -64,7 +64,7 @@ upper_bound = [100,     0.999,  100,   100,     10,    10,      3,      3 ]
 lower_bound = [1e-2, 1e-2, 1e-2,  1e-2,   1e-2,  1e-2,   1e-2,    1e-2]
 
 
-optimal_params = [1.8638829321580523, 0.9582544565961783, 1.8823306815120924, 1.6838523185401713, 1.0197021070711312, 0.8774542996156008, 0.3729612223111333, 0.1176777311575127]
+popt = [1.8638829321580523, 0.9582544565961783, 1.8823306815120924, 1.6838523185401713, 1.0197021070711312, 0.8774542996156008, 0.3729612223111333, 0.1176777311575127]
 
 initial_design_size = 1
 p0 = []
@@ -74,19 +74,19 @@ for _ in range(initial_design_size):
         cur_p0.append(generate_random_value(cur_lower_bound, cur_upper_bound, ids[i]))
     p0.append(cur_p0)
 
-popt = BayesOpt.optimize(p0, data, model_func,
-                         lower_bound=lower_bound,
-                         upper_bound=upper_bound,
-                         verbose=1,
-                         maxiter=1500,
-#                         fixed_params=popt1,
-                         output_dir='2pop_8',
-#                         log_params=False,
-                         log_params=True,
-
-                         exact_feval = True,
-                         #normalize_Y = True)
-                         normalize_Y = False)
+#popt = BayesOpt.optimize(p0, data, model_func,
+#                         lower_bound=lower_bound,
+#                         upper_bound=upper_bound,
+#                         verbose=1,
+#                         maxiter=1500,
+##                         fixed_params=popt1,
+#                         output_dir='2pop_8',
+##                         log_params=False,
+#                         log_params=True,
+#
+#                         exact_feval = True,
+#                         #normalize_Y = True)
+#                         normalize_Y = False)
 print(popt)
 
 model = model_func(popt, ns)

@@ -50,7 +50,7 @@ for _ in range(initial_design_size):
     p0.append(cur_p0)
 
 # We'll work with them through the rest of this script.
-#popt = [1.881, 0.0710, 1.845, 0.911, 0.355, 0.111]
+popt = [1.881, 0.0710, 1.845, 0.911, 0.355, 0.111]
 
 # Fixing first two params
 optimal_params = np.array([1.881, 0.0710, 1.845, 0.911, 0.355, 0.111])
@@ -83,19 +83,19 @@ print('')
 #sys.stdout = PrintSnooper(sys.stdout)
 ###
 
-popt = BayesOpt.optimize(p0, data, func,
-                         lower_bound=lower_bound,
-                         upper_bound=upper_bound,
-                         verbose=1,
-                         maxiter=5,
-#                         fixed_params=popt1,
-                         output_dir='2pop_6',
-#                         log_params=False,
-                         log_params=True,
-                         
-                         exact_feval = True,
-#                         normalize_Y = True)
-                         normalize_Y = False)
+#popt = BayesOpt.optimize(p0, data, func,
+#                         lower_bound=lower_bound,
+#                         upper_bound=upper_bound,
+#                         verbose=1,
+#                         maxiter=5,
+##                         fixed_params=popt1,
+#                         output_dir='2pop_6',
+##                         log_params=False,
+#                         log_params=True,
+#                         
+#                         exact_feval = True,
+##                         normalize_Y = True)
+#                         normalize_Y = False)
 print(popt)
 
 print('Finshed optimization **************************************************')

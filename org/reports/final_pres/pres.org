@@ -1,0 +1,110 @@
+#+TITLE: Байесовская оптимизация для вывода демографических историй
+#+LATEX_CLASS: beamer
+#+startup: beamer
+#+BEAMER_FRAME_LEVEL: 1
+#+LATEX_CLASS_OPTIONS: [russian]
+#+LATEX_HEADER: \usetheme{Frankfurt}
+#+LATEX_HEADER: \usepackage{PTSans}
+#+LaTeX_CLASS_OPTIONS: [presentation, smaller]
+#+LATEX_HEADER_EXTRA:
+#+SUBTITLE: Промежуточная презентация
+#+latex_header: \usepackage[utf8]{inputenc}
+#+latex_header: \usepackage[T2A]{fontenc}
+#+latex_header: \usepackage[english, russian]{babel}
+#+latex_header: \usepackage{mathtools, amsmath, xspace}
+#+latex_header: \uselanguage{Russian}
+#+latex_header: \languagepath{Russian}
+#+latex_hedaer: \usepackage{hyperref}
+# #+LANG: ru
+#+OPTIONS: toc:nil, date:nil
+#+AUTHOR: Илья Шешуков @@latex:\\@@ Руководители: Екатерина Носкова (ИТМО), @@latex:\\@@ Вячеслав Боровицкий (СПбГУ)
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+latex_header: \newcommand{\dadi}{$\partial$a$\partial$i\xspace }
+#+latex_header:\setbeamertemplate{footline}{\insertpagenumber/\insertsectionendpage }
+#+latex_header:\setbeamertemplate{caption}[numbered]
+#+latex_header:\usepackage{slashbox}
+
+* Введение
+** Демографическая модель популяции
+Имея геномы людей, хотим понять как изменялись их популяции.
+Как менялась численность, когда популяции разделялись, как сильно они мигрировали.
+
+#+CAPTION: Популяционная модель человеческой миграции из Африки
+#+NAME: fig:ooa
+#+ATTR_LATEX: :width 2in
+[[./pics/outofafrica.png]]
+
+* Аллель-частотный спектр
+** Аллель-частотный спектр
+:PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+Аллель-частотный спектр это распределение частоты аллелей в данных локусах в
+популяции или выборке.
+
+#+CAPTION: Хитмэп аллель-частотного спектра двух популяций
+#+NAME:   fig:sfs
+#+ATTR_LATEX: :width 2in
+[[./pics/sfs.png]]
+
+* Пример
+#+attr_latex: :mode math :environment matrix
+|              | SNP 1 | SNP 2 | SNP 3 | SNP 4 | SNP 5 | SNP 6 | SNP 7 | SNP 8 |
+|--------------+-------+-------+-------+-------+-------+-------+-------+-------|
+|              |     0 |     1 |     0 |     0 |     0 |     0 |     1 |     0 |
+|              |     1 |     0 |     1 |     0 |     0 |     0 |     1 |     0 |
+|              |     0 |     1 |     1 |     0 |     0 |     1 |     0 |     0 |
+|              |     0 |     0 |     0 |     0 |     1 |     0 |     1 |     1 |
+|              |     0 |     0 |     1 |     0 |     0 |     0 |     1 |     0 |
+|              |     0 |     0 |     0 |     1 |     0 |     1 |     1 |     0 |
+| \text{Сумма} |     1 |     2 |     3 |     1 |     1 |     2 |     5 |     1 |
+
+Спектр: $\begin{pmatrix}4&2&1&0&1\end{pmatrix}$
+
+* Как это делается сейчас
+** \dadi
+https://bitbucket.org/gutenkunstlab/dadi/
++ Плюсы
+  - Она работает
+  - Ей пользуются реальные люди
++ Минусы
+  - Решает дифференциальное уравнение в частных производных, что долго
+  - Использует методы локальной оптимизации, что малоэффективно
+  - Для работы необходимо руками писать Питон
+
+** moments
+https://bitbucket.org/simongravel/moments
++ Плюсы
+  - Эффективнее, чем \dadi, особенно на больших популяциях
+
+* GADMA
+** GADMA
+https://github.com/ctlab/GADMA
+- Основана на \dadi и moments
+- Использует генетический алгоритм для поиска значения параметров
+  демографической модели
+- Не требует человеческого вмешательства
+
+* Что можно сделать
+Давайте попробуем заменить генетический алгоритм на байесовскую оптимизацию
+** Байесовская оптимизация
+- Алгоритм глобальной оптимизации
+- Хорошо работает для сложновычислимых функций (например, если нужно решать
+  уравнение в частных производных), т.е. хорошо подходит для задачи
+- Можно параллелить
+- Менее эвристична, чем генетический алгоритм
+#+ATTR_LATEX: :width 1.5in
+[[./pics/bayes.png]]
+
+* \xspace
+[[./pics/conv.png]]
+
+* Планы
+1) (В процессе) Заменить в \dadi алгоритм градиентного спуска на байесовскую оптимизацию.
+2) Посмотреть станет ли лучше
+3) (Может быть?) Интегрировать в GADMA
+
+* Конец
+#+begin_center
+Спасибо за внимание
+#+end_center

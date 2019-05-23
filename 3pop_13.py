@@ -90,25 +90,25 @@ print('')
 #sys.stdout = PrintSnooper(sys.stdout)
 ###
 
-popt = BayesOpt.optimize(p0, data, func,
-                         lower_bound=lower_bound,
-                         upper_bound=upper_bound,
-                         verbose=1,
-                         maxiter=5000,
-#                         fixed_params=popt1,
-                         output_dir='3pop_13',
-#                         log_params=False,
-                         log_params=True,
-                         
-                         exact_feval = True,
-#                         normalize_Y = True)
-                         normalize_Y = False)
-print(popt)
+#popt = BayesOpt.optimize(p0, data, func,
+#                         lower_bound=lower_bound,
+#                         upper_bound=upper_bound,
+#                         verbose=1,
+#                         maxiter=5000,
+##                         fixed_params=popt1,
+#                         output_dir='3pop_13',
+##                         log_params=False,
+#                         log_params=True,
+#                         
+#                         exact_feval = True,
+##                         normalize_Y = True)
+#                         normalize_Y = False)
+#print(popt)
 
 print('Finshed optimization **************************************************')
 
 # Calculate the best-fit model AFS.
-model = func(popt, ns)
+model = func(optimal_params, ns)
 # Likelihood of the data given the model AFS.
 ll_model = moments.Inference.ll_multinom(model, data)
 print('Maximum log composite likelihood: {0}'.format(ll_model))
