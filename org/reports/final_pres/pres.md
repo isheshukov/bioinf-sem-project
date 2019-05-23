@@ -7,6 +7,7 @@ header-includes:
 - \newcommand{\dadi}{∂a∂i\ }
 - \usepackage{unicode-math}
 - \usepackage{booktabs}
+- \usepackage{animate}
 fonttheme: professionalfonts
 theme: metropolis
 themeoptions: [subsectionpage=simple, numbering=fraction, progressbar=frametitle, block=fill]
