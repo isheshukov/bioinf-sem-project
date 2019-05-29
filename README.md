@@ -44,4 +44,4 @@ After the successful run of the one of the aforementioned scripts you'll see the
 
 From the log file convergence plot may be constructed, for example
 
-[Convergence plot for 2pop_6](./org/reports/final_pres/plots/2pop_6.best.log.png)
+![Convergence plot for 2pop_6](./org/reports/final_pres/plots/2pop_6.best.log.png)
