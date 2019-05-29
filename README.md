@@ -1,4 +1,4 @@
-# Bayesian optimization for demographic history inference. 
+# Bayesian optimization for demographic history inference
 
 *Bioinformatics Institute, 2019*
 
