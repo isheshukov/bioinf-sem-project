@@ -24,7 +24,7 @@ Python >= 2.5
 
 *It's best to use isolated environments like virtualenv or conda.*
 
-Install [moments](https://bitbucket.org/simongravel/moments) according the instructions, then execute
+Install [moments](https://bitbucket.org/simongravel/moments) according to the instructions, then execute
 
 ```
 pip install -r requirements.txt
@@ -37,3 +37,11 @@ to install dependencies.
 Run `python2 2pop_6.py`, `python2 2pop_8.py` or `python2 3pop_13.py`.
 
 There are no parameters to set in CLI. You can change the program by editing the source code.
+
+## Results
+
+After the successful run of the one of the aforementioned scripts you'll see the results in `out` folder. They are in the form of csv table `log.txt`, `GPyOpt` reports and `GPyOpt` plots provided that your problem is 1- or 2-dimensional.
+
+From the log file convergence plot may be constructed, for example
+
+[Convergence plot for 2pop_6](./org/reports/final_pres/plots/2pop_6.best.log.png)

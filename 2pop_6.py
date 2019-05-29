@@ -36,11 +36,13 @@ ns = data.sample_sizes
 # Parameters are: (nu1f, nu2B, nu2F, m, Tp, T)
 
 ids =         ['n',  'n',  'n',  'm',  't',  't'] 
-upper_bound = [100,  100,  100,  10,    3,    3 ]
-lower_bound = [1e-2, 1e-2, 1e-2,  1e-2,    1e-4,    1e-4 ]
+upper_bound = [100,  100,  100,  10,    3,    3]
+lower_bound = [1e-2, 1e-2, 1e-2,  1e-2,    1e-4,    1e-4]
+
+# Generating starting point
 
 func = prior_onegrow_mig
-#################p0 = [uniform(l, u) for l, u in zip(lower_bound, upper_bound)]
+#p0 = [uniform(l, u) for l, u in zip(lower_bound, upper_bound)]
 initial_design_size = 1
 p0 = []
 for _ in range(initial_design_size):
@@ -49,10 +51,6 @@ for _ in range(initial_design_size):
         cur_p0.append(generate_random_value(cur_lower_bound, cur_upper_bound, ids[i]))
     p0.append(cur_p0)
 
-# We'll work with them through the rest of this script.
-popt = [1.881, 0.0710, 1.845, 0.911, 0.355, 0.111]
-
-# Fixing first two params
 optimal_params = np.array([1.881, 0.0710, 1.845, 0.911, 0.355, 0.111])
 print('Optimal params')
 print(', '.join('%0.3f' % one_arg for one_arg in optimal_params))
@@ -61,44 +59,25 @@ print(', '.join('%0.3f' % one_arg for one_arg in np.log(optimal_params)))
 #print(np.log(optimal_params))
 print('')
 
-print('========================== Beginning optimization =================================')
-print('')
+print('=================== Beginning optimization ==========================')
+print()
 
 
-###
-#import sys
-#import inspect
-#
-#class PrintSnooper:
-#    def __init__(self, stdout):
-#        self.stdout = stdout
-#    def caller(self):
-#        return inspect.stack()[2][3]
-#    def write(self, s):
-#        self.stdout.write("printed by %s: " % self.caller())
-#        self.stdout.write(s)
-#        self.stdout.write("\n")
-#
-## redirect stdout to a helper class.
-#sys.stdout = PrintSnooper(sys.stdout)
-###
+popt = BayesOpt.optimize(p0, data, func,
+                         lower_bound=lower_bound,
+                         upper_bound=upper_bound,
+                         verbose=1,
+                         maxiter=5,
+#                        fixed_params=popt1,
+                         output_dir='2pop_6',  # saving results to ./out/2pop_6
+#                        log_params=False,
+                         log_params=True,
 
-#popt = BayesOpt.optimize(p0, data, func,
-#                         lower_bound=lower_bound,
-#                         upper_bound=upper_bound,
-#                         verbose=1,
-#                         maxiter=5,
-##                         fixed_params=popt1,
-#                         output_dir='2pop_6',
-##                         log_params=False,
-#                         log_params=True,
-#                         
-#                         exact_feval = True,
-##                         normalize_Y = True)
-#                         normalize_Y = False)
+                         exact_feval=True,
+                         normalize_Y=False)
 print(popt)
 
-print('Finshed optimization **************************************************')
+print('Finshed optimization ************************************************')
 
 # Calculate the best-fit model AFS.
 model = func(popt, ns)
