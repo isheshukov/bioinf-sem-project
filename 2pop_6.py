@@ -8,6 +8,7 @@ import numpy as np
 
 np.random.seed(0)
 
+# This is the model function that we try to optimize.
 from lib.demographic_models import prior_onegrow_mig
 
 # p_ids is list of identifiers for parameters:
@@ -17,6 +18,9 @@ from lib.demographic_models import prior_onegrow_mig
 # or it can be None
 
 # Actually we use triangular distribution for all parameters except time.
+# We use this distribution to generate starting point somewehere near (1,1,...)
+# because in out tests it is better than uniformly sampling all the search space
+
 def generate_random_value(low_bound, upp_bound, identificator=None):
     """Generate random value for different parameters of models"""
     if identificator == 't' or identificator == 's':
@@ -30,10 +34,12 @@ def generate_random_value(low_bound, upp_bound, identificator=None):
         sample = np.random.triangular(low_bound, mode, upp_bound)
     return sample
 
+# Loading data (allele-frequency spectrum) for two populations
 data = moments.Spectrum.from_file('lib/YRI_CEU.fs')
 ns = data.sample_sizes
 
-# Parameters are: (nu1f, nu2B, nu2F, m, Tp, T)
+# Model parameters are: (nu1f, nu2B, nu2F, m, Tp, T)
+# Setting bounds for optimization to work on
 
 ids =         ['n',  'n',  'n',  'm',  't',  't'] 
 upper_bound = [100,  100,  100,  10,    3,    3]
@@ -42,7 +48,6 @@ lower_bound = [1e-2, 1e-2, 1e-2,  1e-2,    1e-4,    1e-4]
 # Generating starting point
 
 func = prior_onegrow_mig
-#p0 = [uniform(l, u) for l, u in zip(lower_bound, upper_bound)]
 initial_design_size = 1
 p0 = []
 for _ in range(initial_design_size):
@@ -51,6 +56,7 @@ for _ in range(initial_design_size):
         cur_p0.append(generate_random_value(cur_lower_bound, cur_upper_bound, ids[i]))
     p0.append(cur_p0)
 
+# Known optimal parameters. Used only for prettiness
 optimal_params = np.array([1.881, 0.0710, 1.845, 0.911, 0.355, 0.111])
 print('Optimal params')
 print(', '.join('%0.3f' % one_arg for one_arg in optimal_params))
@@ -63,21 +69,31 @@ print('=================== Beginning optimization ==========================')
 print()
 
 
+# Optimizing our function using lib/BayesOpt.py 
+
 popt = BayesOpt.optimize(p0, data, func,
                          lower_bound=lower_bound,
                          upper_bound=upper_bound,
                          verbose=1,
                          maxiter=5,
-#                        fixed_params=popt1,
+#                        fixed_params=popt1,   # not fixing any parameters, optimizing all of them
                          output_dir='2pop_6',  # saving results to ./out/2pop_6
 #                        log_params=False,
-                         log_params=True,
+                         log_params=True,      # logarithm parameters while search for new point.
+                                               # Numerically better
 
-                         exact_feval=True,
-                         normalize_Y=False)
+                         exact_feval=True,     # assume that there is no random noise in the ouput
+                         normalize_Y=False)    # not normalizing_Y, empirically better in tests
 print(popt)
 
 print('Finshed optimization ************************************************')
+
+# Printing the results
+# With optimal parameters that we found we may calculate
+# log-likelihood to compare ourselves with other 
+# optimization methods.
+
+# This basically repeats old `moments` routine to compare our outputs to theirs
 
 # Calculate the best-fit model AFS.
 model = func(popt, ns)

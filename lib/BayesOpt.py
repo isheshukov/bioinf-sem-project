@@ -11,6 +11,7 @@ cntr = 0
 best_result = np.inf
 time_start = time()
 
+# Optimization routine used in all of the scripts
 
 def optimize(p0, data, model_func, lower_bound=None, upper_bound=None,
              verbose=0, flush_delay=0.5, epsilon=1e-3,
@@ -20,6 +21,13 @@ def optimize(p0, data, model_func, lower_bound=None, upper_bound=None,
 
     # passing all parameters to objective function,
     # because gpyopt can't do it itself
+
+    # Function wrapping our objective function
+    #
+    # It is needed, because we need to log
+    # each evaluation of said function
+    # and and exponent our parameters is flag `log_params`
+    # is set.
 
     def f_obj_wrapped(x):
         global cntr
@@ -59,6 +67,8 @@ def optimize(p0, data, model_func, lower_bound=None, upper_bound=None,
 
         return result
 
+    # Creating output dir for containing results
+
     _out_dir = ("out/" + output_dir + "/") if output_dir is not None else ""
 
     if output_file:
@@ -79,9 +89,11 @@ def optimize(p0, data, model_func, lower_bound=None, upper_bound=None,
         log_file = open(log_file_path, 'w', 1)
     log_file.write('Iteration, Objective function, Best objective function, Parameters, Time elapsed (s)\n')
 
-    # args = (data, model_func, lower_bound, upper_bound, verbose,
-    #         multinom, flush_delay, func_args, func_kwargs, fixed_params,
-    #         ll_scale, output_stream)
+
+    # Optimization has problems when it tries to evaluate a point 
+    # directly on the bounds of search space.
+    # That way we reduce the instability by limting possible evaluations.
+
     EPS = 1e-6
     lower_bound_args = map(lambda x: (x - EPS) if ((x - EPS) > 0.0) else 0.0, lower_bound)
     upper_bound_args = map(lambda x: (x + EPS), upper_bound)
@@ -89,17 +101,27 @@ def optimize(p0, data, model_func, lower_bound=None, upper_bound=None,
             multinom, flush_delay, func_args, func_kwargs, fixed_params,
             ll_scale, output_stream)
 
-    # Fixing parameters. Not sure if will work with gpy
+    # Fixing parameters.
+    # Necessary if we try to optimize only a subset of already known parameters
+    # We used it for testing, when our optimization was producing bad results.
+
     if isinstance(p0[0], list):
         p0 = [BayesInference._project_params_down(cur_p0, fixed_params) for cur_p0 in p0]
     else:
         p0 = BayesInference._project_params_down(p0, fixed_params)
 
 
+    # Creating bounds dict for GPyOpt to optimize on.
+
     if fixed_params is None:
         bounds = [{'domain': (l, u)} for l, u in zip(lower_bound, upper_bound)]
     else:
         bounds = [{'domain': (l, u)} for l, u, p in zip(lower_bound, upper_bound, fixed_params) if p is None]
+
+    # Logarithmic parameters are somehow producing better results
+    # and optimization converges faster if this flag is used.
+    # This may be happening because optimal point is often 
+    # somewhere near the point (1,1,1,1...,1)
 
     if log_params:
         # print bounds
@@ -112,20 +134,24 @@ def optimize(p0, data, model_func, lower_bound=None, upper_bound=None,
         p0 = np.log(p0)
         # print p0
 
+    # Calling GPyOpt for optimization
     myProblem = GPyOpt.methods.BayesianOptimization(f_obj_wrapped,
-                                                    X=np.atleast_2d(p0),
-                                                    domain=bounds,
+                                                    X=np.atleast_2d(p0), # ensuring that the starting point of optimization is 2d array
+                                                                         # because GPyOpt works only on such points
+                                                    domain=bounds,       # search space
 #                                                    acquisition_type='MPI',
-                                                    acquisition_type='EI',
-                                                    verbosity=True,
-                                                    maximize=False,
+                                                    acquisition_type='EI', # Use `Expected Improvement` acquisition function
+                                                    verbosity=True, # print logging info
+                                                    maximize=False, # minimizing function
 #                                                    num_cores=1,
-                                                    num_cores=10,
+                                                    num_cores=10, 
                                                     verbosity_model=True,
                                                     **kwargs
                                                     )
 
     myProblem.run_optimization(maxiter, verbosity=True)
+
+    # Optimization ended. Writing results.
 
     if not os.path.exists(_out_dir + "plots/"):
         try:
