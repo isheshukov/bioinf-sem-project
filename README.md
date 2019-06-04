@@ -1,8 +1,6 @@
-# Final Project
+# Bayesian optimization for demographic history inference
 
 *Bioinformatics Institute, 2019*
-
-*Ilia Sheshukov*
 
 ## Project goals
 
