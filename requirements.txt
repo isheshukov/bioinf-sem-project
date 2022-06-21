@@ -9,7 +9,7 @@ kiwisolver==1.0.1
 matplotlib==2.2.4
 moments==1.0.0
 mpmath==1.1.0
-numpy==1.15.4
+numpy==1.22.0
 paramz==0.9.4
 pathlib2==2.3.3
 pyparsing==2.4.0
